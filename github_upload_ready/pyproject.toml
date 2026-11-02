@@ -1,0 +1,81 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "capturetrust"
+version = "1.0.1"
+description = "Explainable image quality inspection for OCR, document scanning and upload workflows."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "CaptureTrust contributors" }]
+keywords = [
+    "image-quality",
+    "computer-vision",
+    "opencv",
+    "ocr",
+    "document-scanning",
+    "blur-detection",
+    "glare-detection",
+    "kyc",
+    "quality-check",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Scientific/Engineering :: Image Processing",
+    "Typing :: Typed",
+]
+dependencies = [
+    "opencv-python-headless>=4.8",
+    "numpy>=1.24",
+    "Pillow>=10.0",
+    "pillow-heif>=0.13",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.4",
+    "mypy>=1.0",
+    "build>=1.0",
+    "twine>=5.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/kriishgulati/capturetrust"
+Repository = "https://github.com/kriishgulati/capturetrust"
+Issues = "https://github.com/kriishgulati/capturetrust/issues"
+Changelog = "https://github.com/kriishgulati/capturetrust/blob/main/CHANGELOG.md"
+
+[project.scripts]
+capturetrust = "capturetrust.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+capturetrust = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"
+
+[tool.coverage.run]
+source = ["capturetrust"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
